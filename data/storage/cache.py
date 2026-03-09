@@ -5,6 +5,7 @@ import datetime
 from config.settings import MARKET_CLOSE_HOUR
 from config.settings import MARKET_CLOSE_BUFFER_MINUTES
 from config.settings import MARKET_HOLIDAYS
+from utils import get_last_valid_trading_date
 
 class MarketCache:
     def __init__(self, base_dir):
@@ -50,11 +51,5 @@ class MarketCache:
         if ny_time.hour > MARKET_CLOSE_HOUR or (ny_time.hour == MARKET_CLOSE_HOUR and ny_time.minute >= MARKET_CLOSE_BUFFER_MINUTES):
             return most_recent_date == datetime.date.today()
         
-        return most_recent_date == self.get_last_valid_trading_date()
+        return most_recent_date == get_last_valid_trading_date()
         
-    def get_last_valid_trading_date(self):
-        valid_date = datetime.date.today()
-        while (valid_date in MARKET_HOLIDAYS) or (valid_date.weekday() > 4):
-            valid_date = valid_date - datetime.timedelta(days=1)
-            
-        return valid_date
