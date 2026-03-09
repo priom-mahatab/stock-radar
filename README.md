@@ -37,7 +37,7 @@ Top ETFs to Watch
 ## Project Structure
 
 ```
-ai_market_radar/
+stock_radar/
 ├── config/
 │   ├── settings.py          # Central constants and paths
 │   └── universe.py          # Stock and ETF universe
