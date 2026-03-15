@@ -83,8 +83,8 @@ stock_radar/
 
 | Phase | Status | Description |
 |-------|--------|-------------|
-| 1 | 🔨 In Progress | Market data ingestion, caching, validation |
-| 2 | ⏳ Planned | Feature engineering (price, volume, sector) |
+| 1 | ✅ Complete | Market data ingestion, caching, validation |
+| 2 | 🔨 In Progress | Feature engineering (price, volume, sector) |
 | 3 | ⏳ Planned | ML ranking model (XGBoost / LightGBM) |
 | 4 | ⏳ Planned | News sentiment analysis (VADER / FinBERT) |
 | 5 | ⏳ Planned | Automation and daily reporting |
