@@ -36,16 +36,16 @@ class MarketCache:
         file_path = self._get_file_path(ticker, data_type)
         if not (os.path.exists(file_path)):
             raise FileNotFoundError(f"Cache file not found: {file_path}")
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, index_col=0, parse_dates=True)
         return df
 
     def is_valid(self, ticker, data_type):
         file_path = self._get_file_path(ticker, data_type)
         if not os.path.exists(file_path):
             return False
-        
+
         df = self.load(ticker, data_type)
-        most_recent_date = pd.to_datetime(df["Date"]).max().date()
+        most_recent_date = pd.to_datetime(df.index).max().date()
         ny_time = datetime.datetime.now(ZoneInfo("America/New_York"))
 
         if ny_time.hour > MARKET_CLOSE_HOUR or (ny_time.hour == MARKET_CLOSE_HOUR and ny_time.minute >= MARKET_CLOSE_BUFFER_MINUTES):

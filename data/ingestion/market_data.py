@@ -1,4 +1,4 @@
-from config.settings import PRICE_HISTORY_DAYS
+from config.settings import PRICE_HISTORY_DAYS, CALENDAR_DAYS_FETCH
 import yfinance as yf
 import datetime as dt
 
@@ -11,6 +11,6 @@ class MarketData:
         if self.cache.is_valid(ticker, "prices"):
             return self.cache.load(ticker, "prices")
         else:
-            price_data = yf.download(tickers=ticker, start=dt.date.today() - dt.timedelta(days=PRICE_HISTORY_DAYS), end=dt.date.today(), multi_level_index=False)
+            price_data = yf.download(tickers=ticker, start=dt.date.today() - dt.timedelta(days=CALENDAR_DAYS_FETCH), end=dt.date.today(), multi_level_index=False)
             self.cache.save(ticker, "prices", price_data)
             return price_data
