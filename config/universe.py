@@ -27,13 +27,59 @@ SECTOR_ETFS = {
     # Additional prominent sector ETFs worth tracking
     "XLF":  ("Financial Select Sector SPDR",         "financials"),     # Banks, insurance
     "XLI":  ("Industrial Select Sector SPDR",        "industrials"),    # Defense, manufacturing
+    "XLU":  ("Utilities Select Sector SPDR",          "utilities"),      # Utilities, infrastructure
     "XLY":  ("Consumer Discretionary Select Sector", "consumer_disc"),  # Retail, autos
+
+    "XLP":  ("Consumer Staples Select Sector SPDR", "consumer_staples"),  # Food, beverages
+    "XLB":  ("Materials Select Sector SPDR",         "materials"),      # Chemicals, metals (non-gold)
+    "XLC":  ("Communication Services Select Sector SPDR", "communication"),  # Telecom, media
+    "XLRE": ("Real Estate Select Sector SPDR",      "real_estate"),     # REITs, real estate
+}
+
+
+SECTOR_MAPPING = {
+    "XLK": [  # Technology
+        "AAPL", "MSFT", "NVDA", "AVGO", "ORCL", "CRM", "AMD", "ADBE",
+        "CSCO", "TXN", "QCOM", "IBM", "INTU", "NOW", "ACN"
+    ],
+    "XLV": [  # Health Care
+        "LLY", "UNH", "JNJ", "ABBV", "MRK", "TMO", "ABT", "DHR", "PFE", "HCA",
+        "AMGN", "ISRG", "SYK", "BMY", "GILD", "CI", "BSX", "BDX", "REGN", "ZTS"
+    ],
+    "XLU": [  # Utilities
+        "NEE", "SO", "DUK"
+    ],
+    "XLF": [  # Financials
+        "BRK-B", "JPM", "V", "MA", "BAC", "GS", "MS", "SPGI",
+        "BLK", "MMC", "CME", "USB", "PNC", "AON", "MCO", "AXP", "C"
+    ],
+    "XLE": [  # Energy
+        "XOM", "CVX", "EOG"
+    ],
+    "XLI": [  # Industrials
+        "DE", "GE", "HON", "UNP", "RTX", "CAT", "ETN", "ITW", "EMR", "NSC", "UPS", "WM"
+    ],
+    "XLY": [  # Consumer Discretionary
+        "AMZN", "TSLA", "MCD", "BKNG", "TJX", "LOW", "HD", "NKE", "TGT"
+    ],
+    "XLP": [  # Consumer Staples (using XLP as proxy)
+        "WMT", "PG", "KO", "PEP", "COST", "PM", "MDLZ", "CL", "MO"
+    ],
+    "XLB": [  # Materials (using XLB as proxy, GDX too narrow for these)
+        "LIN", "APD", "SHW", "FCX"
+    ],
+    "XLC": [  # Communication Services (using XLC as proxy)
+        "GOOGL", "META", "NFLX", "CMCSA", "T", "VZ"
+    ],
+    "XLRE": [  # Real Estate (using XLRE as proxy)
+        "PLD", "PSA"
+    ],
 }
 
 # --- WATCHLIST ETFs ---
 # These are the ETFs the system can RECOMMEND (output)
 # Separate from SECTOR_ETFS which are used as *features/signals*
-RECOMMENDABLE_ETFS = ["SPY", "QQQ", "IWM", "GDX", "XLK", "XLE", "XLV", "XLF"]
+RECOMMENDABLE_ETFS = ["SPY", "QQQ", "IWM", "GDX", "XLK", "XLE", "XLV", "XLF", "XLY", "XLP", "XLB", "XLC", "XLRE"]
 
 # Used to compute relative performance for all stocks
 BENCHMARK = "SPY"
