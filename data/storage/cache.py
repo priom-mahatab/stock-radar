@@ -43,7 +43,7 @@ class MarketCache:
         file_path = self._get_file_path(ticker, data_type)
         if not os.path.exists(file_path):
             return False
-
+    
         df = self.load(ticker, data_type)
         most_recent_date = pd.to_datetime(df.index).max().date()
         ny_time = datetime.datetime.now(ZoneInfo("America/New_York"))

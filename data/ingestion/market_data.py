@@ -11,6 +11,6 @@ class MarketData:
         if self.cache.is_valid(ticker, "prices"):
             return self.cache.load(ticker, "prices")
         else:
-            price_data = yf.download(tickers=ticker, start=dt.date.today() - dt.timedelta(days=CALENDAR_DAYS_FETCH), end=dt.date.today(), multi_level_index=False)
+            price_data = yf.download(tickers=ticker, start=dt.date.today() - dt.timedelta(days=CALENDAR_DAYS_FETCH), end=dt.date.today() + dt.timedelta(days=1), multi_level_index=False, auto_adjust=True)
             self.cache.save(ticker, "prices", price_data)
             return price_data
