@@ -6,8 +6,8 @@ def ranker(df):
     etfs = df[etf_mask]
     stocks = df[~etf_mask]
 
-    stocks = stocks.sort_values("score", ascending=False)
-    etfs = etfs.sort_values("score", ascending=False)
+    stocks = stocks.sort_values("scores", ascending=False)
+    etfs = etfs.sort_values("scores", ascending=False)
 
     top_stocks = stocks.head(STOCKS_OUTPUT_COUNT)
     top_etfs = etfs.head(ETF_OUTPUT_COUNT)

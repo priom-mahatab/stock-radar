@@ -30,5 +30,7 @@ def build_feature_matrix(market_data) -> pd.DataFrame:
             combined = {**price_features, **volume_features, **sector_features}
             features.append(combined)
              
+    if not features:
+        raise ValueError("No tickers passed validation — feature matrix is empty.")
     return pd.DataFrame(features).set_index("ticker")
     

@@ -13,7 +13,7 @@ def validate_price_df(ticker, df) -> bool:
         return False
     
     most_recent_date = pd.to_datetime(df.index).max().date()
-    if (most_recent_date < get_last_valid_trading_date()):
+    if (most_recent_date < get_last_valid_trading_date(lookback=1)):
         print(f"Most recent data is outdated")
         return False
     

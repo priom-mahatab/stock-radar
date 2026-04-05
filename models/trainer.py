@@ -2,6 +2,11 @@ from config.universe import SECTOR_MAPPING, SP100_TICKERS
 import pandas as pd
 import xgboost as xgb
 import joblib
+import os
+from config.settings import MODELS_FOLDER
+
+MODEL_URL = os.path.join(MODELS_FOLDER, "xgb_model.pkl")
+
 from features.price_features import compute_price_features
 from features.sector_features import compute_sector_features
 from features.volume_features import compute_volume_features
@@ -57,6 +62,6 @@ def train_model(df):
     model.fit(X_train, y_train)
 
     print("Model evaluation:" + str(model.score(X_test, y_test)))
-    joblib.dump(model, 'models/artifacts/xgb_model.pkl')
+    joblib.dump(model, MODEL_URL)
 
     return model

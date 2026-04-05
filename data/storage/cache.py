@@ -50,6 +50,6 @@ class MarketCache:
 
         if ny_time.hour > MARKET_CLOSE_HOUR or (ny_time.hour == MARKET_CLOSE_HOUR and ny_time.minute >= MARKET_CLOSE_BUFFER_MINUTES):
             return most_recent_date == datetime.date.today()
-        
-        return most_recent_date == get_last_valid_trading_date()
+
+        return most_recent_date >= get_last_valid_trading_date(lookback=1)
         
