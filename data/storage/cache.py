@@ -45,11 +45,18 @@ class MarketCache:
             return False
     
         df = self.load(ticker, data_type)
-        most_recent_date = pd.to_datetime(df.index).max().date()
+        max_ts = pd.to_datetime(df.index).max()
+        if pd.isnull(max_ts):
+            return False
+        most_recent_date = max_ts.date()
         ny_time = datetime.datetime.now(ZoneInfo("America/New_York"))
+        today = datetime.date.today()
 
-        if ny_time.hour > MARKET_CLOSE_HOUR or (ny_time.hour == MARKET_CLOSE_HOUR and ny_time.minute >= MARKET_CLOSE_BUFFER_MINUTES):
-            return most_recent_date == datetime.date.today()
+        is_trading_day = today.weekday() <= 4 and today not in MARKET_HOLIDAYS
+        market_closed = ny_time.hour > MARKET_CLOSE_HOUR or (ny_time.hour == MARKET_CLOSE_HOUR and ny_time.minute >= MARKET_CLOSE_BUFFER_MINUTES)
+
+        if is_trading_day and market_closed:
+            return most_recent_date == today
 
         return most_recent_date >= get_last_valid_trading_date(lookback=1)
         
