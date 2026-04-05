@@ -1,5 +1,5 @@
 import pandas as pd
-from config.universe import SP100_TICKERS, SECTOR_MAPPING
+from config.universe import SP100_TICKERS, RECOMMENDABLE_ETFS, SECTOR_MAPPING
 from features.price_features import compute_price_features
 from features.volume_features import compute_volume_features
 from features.sector_features import compute_sector_features
@@ -29,7 +29,16 @@ def build_feature_matrix(market_data) -> pd.DataFrame:
 
             combined = {**price_features, **volume_features, **sector_features}
             features.append(combined)
-             
+    
+    for ticker in RECOMMENDABLE_ETFS:
+        price = market_data.get_price_data(ticker)
+        if validate_price_df(ticker, price):
+            price_features = compute_price_features(ticker, price)
+            volume_features = compute_volume_features(ticker, price)
+
+            combined = {**price_features, **volume_features}
+            features.append(combined)
+
     if not features:
         raise ValueError("No tickers passed validation — feature matrix is empty.")
     return pd.DataFrame(features).set_index("ticker")
