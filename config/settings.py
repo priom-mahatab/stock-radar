@@ -1,5 +1,6 @@
 import os
 import datetime
+from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -16,6 +17,12 @@ ETF_OUTPUT_COUNT = 2
 PRICE_HISTORY_DAYS = 200
 CALENDAR_DAYS_FETCH = 300
 MARKET_CLOSE_BUFFER_MINUTES = 30
+SENTIMENT_WINDOW_DAYS = 3
+
+load_dotenv()
+
+FINNHUB_KEY = os.getenv("FINNHUB_KEY")
+
 MARKET_HOLIDAYS = {
     datetime.date(2026, 1,  1),   # New Year's Day
     datetime.date(2026, 1, 20),   # MLK Day
