@@ -7,7 +7,7 @@ SP100_TICKERS = [
     "GS", "INTU", "ISRG", "QCOM", "VZ", "RTX", "SPGI", "T", "PFE",
     "NEE", "AMGN", "BLK", "HON", "CMCSA", "UNP", "LOW", "DE", "NOW",
     "SYK", "MS", "C", "BMY", "BKNG", "GILD", "CI", "PLD", "TJX",
-    "MMC", "UPS", "SO", "DUK", "ZTS", "AON", "CL", "REGN", "CME",
+    "UPS", "SO", "DUK", "ZTS", "AON", "CL", "REGN", "CME",
     "BSX", "BDX", "EOG", "MO", "MDLZ", "ETN", "ITW", "HCA", "WM",
     "FCX", "PSA", "APD", "MCO", "USB", "PNC", "TGT", "EMR", "NSC", "SHW",
 ]
@@ -51,7 +51,7 @@ SECTOR_MAPPING = {
     ],
     "XLF": [  # Financials
         "BRK-B", "JPM", "V", "MA", "BAC", "GS", "MS", "SPGI",
-        "BLK", "MMC", "CME", "USB", "PNC", "AON", "MCO", "AXP", "C"
+        "BLK", "CME", "USB", "PNC", "AON", "MCO", "AXP", "C"
     ],
     "XLE": [  # Energy
         "XOM", "CVX", "EOG"
