@@ -1,4 +1,5 @@
 import requests
+import time
 from datetime import datetime, timedelta
 from config.settings import SENTIMENT_WINDOW_DAYS, FINNHUB_KEY
 
@@ -17,6 +18,7 @@ def fetch_news(ticker) -> list[str]:
     if response.status_code == 200:
         articles = response.json()
         headlines = [article["headline"] for article in articles]
+        time.sleep(0.5)
         return headlines
     else:
         print(f"Failed to fetch news for {ticker}: {response.status_code}")

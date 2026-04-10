@@ -10,6 +10,7 @@ MODEL_URL = os.path.join(MODELS_FOLDER, "xgb_model.pkl")
 from features.price_features import compute_price_features
 from features.sector_features import compute_sector_features
 from features.volume_features import compute_volume_features
+from features.sentiment_features import compute_sentiment_features
 
 def build_training_data(market_data):
     
@@ -24,6 +25,8 @@ def build_training_data(market_data):
         data = market_data.get_price_data(ticker)
         sector = ticker_to_sector.get(ticker)
         sector_df = market_data.get_price_data(sector)
+        sentiment_features = compute_sentiment_features(ticker) or {}
+
         dates = data.index[:-5]
         for date in dates:
             label_dates = data.index[data.index > date][:5]
@@ -32,7 +35,6 @@ def build_training_data(market_data):
             price_features = compute_price_features(ticker, df_slice)
             volume_features = compute_volume_features(ticker, df_slice)        
             sector_features = compute_sector_features(ticker, df_slice, sector_df_slice)
-
             start_price = data.loc[date, "Close"] # Get the closing price on the current date
             end_price = data.loc[label_dates[-1], "Close"] # Get the closing price 5 days after the current date
             stock_return = (end_price - start_price) / start_price
@@ -40,7 +42,7 @@ def build_training_data(market_data):
             label = 1 if stock_return > spy_return and stock_return > 0 else 0
 
             if price_features and volume_features and sector_features:
-                features = {**price_features, **volume_features, **sector_features} # Combine all features into a single dictionary
+                features = {**price_features, **volume_features, **sector_features, **(sentiment_features or {})} # Combine all features into a single dictionary
                 features["date"] = date
                 features["label"] = label
                 results.append(features)
