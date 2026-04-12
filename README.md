@@ -4,6 +4,16 @@ A daily AI-powered stock discovery system that runs after market close and recom
 
 ---
 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-2C2C2C?style=for-the-badge&logo=xgboost&logoColor=white)
+![LightGBM](https://img.shields.io/badge/LightGBM-0080FF?style=for-the-badge)
+![VADER](https://img.shields.io/badge/VADER-Sentiment-green?style=for-the-badge)
+![Finnhub](https://img.shields.io/badge/Finnhub-API-EB3C44?style=for-the-badge)
+![Yahoo Finance](https://img.shields.io/badge/Yahoo--Finance-yfinance-400095?style=for-the-badge&logo=yahoo&logoColor=white)
+
 ## What It Does
 
 Every day after the market closes, AI Market Radar:
@@ -192,8 +202,3 @@ apscheduler
 AI Market Radar is a personal learning project. Nothing in this system constitutes financial advice. All outputs are for research and educational purposes only.
 
 ---
-
-## License
-
-MIT
-```
