@@ -3,7 +3,12 @@ import time
 from datetime import datetime, timedelta
 from config.settings import SENTIMENT_WINDOW_DAYS, FINNHUB_KEY
 
-def fetch_news(ticker) -> list[str]:
+def fetch_news(ticker, cache) -> list[str]:
+
+    if cache.is_valid(ticker, "news"):
+        df = cache.load(ticker, "news")
+        return df["headline"].tolist()
+
     now = datetime.today()
     past_date = now - timedelta(days=SENTIMENT_WINDOW_DAYS)
     url = "https://finnhub.io/api/v1/company-news"
@@ -18,7 +23,7 @@ def fetch_news(ticker) -> list[str]:
     if response.status_code == 200:
         articles = response.json()
         headlines = [article["headline"] for article in articles]
-        time.sleep(0.5)
+        time.sleep(1.0)
         return headlines
     else:
         print(f"Failed to fetch news for {ticker}: {response.status_code}")

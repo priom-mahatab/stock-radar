@@ -34,7 +34,7 @@ MARKET_HOLIDAYS = {
     datetime.date(2026, 9,  1),   # Labor Day
     datetime.date(2026, 11, 27),  # Thanksgiving
     datetime.date(2026, 12, 25),  # Christmas
-    datetime.date(2026, 1,  1),   # New Year's Day
+    datetime.date(2027, 1,  1),   # New Year's Day
     datetime.date(2027, 1, 19),   # MLK Day
     datetime.date(2027, 2, 16),   # Presidents' Day
     datetime.date(2027, 4,  3),   # Good Friday

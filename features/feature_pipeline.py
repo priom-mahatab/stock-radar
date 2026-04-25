@@ -20,7 +20,7 @@ def build_feature_matrix(market_data) -> pd.DataFrame:
         if validate_price_df(ticker, price):
             price_features = compute_price_features(ticker, price)
             volume_features = compute_volume_features(ticker, price)
-            sentiment_features = compute_sentiment_features(ticker)
+            sentiment_features = compute_sentiment_features(ticker, market_data.cache)
             sector = ticker_to_sector.get(ticker)
             if not sector:
                 combined = {**price_features, **volume_features, **(sentiment_features or {})}
@@ -37,7 +37,7 @@ def build_feature_matrix(market_data) -> pd.DataFrame:
         if validate_price_df(ticker, price):
             price_features = compute_price_features(ticker, price)
             volume_features = compute_volume_features(ticker, price)
-            sentiment_features = compute_sentiment_features(ticker)
+            sentiment_features = compute_sentiment_features(ticker, market_data.cache)
 
             combined = {**price_features, **volume_features, **(sentiment_features or {})}
             features.append(combined)

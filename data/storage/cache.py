@@ -43,6 +43,11 @@ class MarketCache:
         file_path = self._get_file_path(ticker, data_type)
         if not os.path.exists(file_path):
             return False
+        
+        if data_type == "news":
+            modified_timestamp = os.path.getmtime(file_path)
+            modified_date = datetime.date.fromtimestamp(modified_timestamp)
+            return modified_date == datetime.date.today()
     
         df = self.load(ticker, data_type)
         max_ts = pd.to_datetime(df.index).max()
