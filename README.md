@@ -95,9 +95,9 @@ stock_radar/
 |-------|--------|-------------|
 | 1 | ✅ Complete | Market data ingestion, caching, validation |
 | 2 | ✅ Complete | Feature engineering (price, volume, sector) |
-| 3 | ⏳ In Progress | ML ranking model (XGBoost / LightGBM) |
-| 4 | ⏳ In Progress | News sentiment analysis (VADER / FinBERT) |
-| 5 | ⏳ Planned | Automation and daily reporting |
+| 3 | ✅ Complete | ML ranking model (XGBoost / LightGBM) |
+| 4 | ✅ Complete | News sentiment analysis (VADER / FinBERT) |
+| 5 | ✅ Complete | Automation and daily reporting |
 | 6 | 💡 Future | Backtesting engine |
 | 7 | 💡 Future | Market regime detection |
 | 8 | 💡 Future | LLM news summarization |
