@@ -5,7 +5,7 @@ def compute_sentiment_features(ticker, cache) -> dict:
         if not ticker:
             return None
         
-        sentiment_score = get_ticker_sentiment(ticker, cache)
+        sentiment_score = get_ticker_sentiment(ticker)
         return {"ticker": ticker, "sentiment_score" : sentiment_score}
     
     except Exception as e:
